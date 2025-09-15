@@ -1,0 +1,72 @@
+[
+  {
+    "sport_id": 1,
+    "sport_name": "Football",
+    "max_team_size": 11,
+    "min_team_size": 11,
+    "description": "Association football with 11 players per team"
+  },
+  {
+    "sport_id": 2,
+    "sport_name": "Cricket",
+    "max_team_size": 11,
+    "min_team_size": 11,
+    "description": "Cricket match with 11 players per team"
+  },
+  {
+    "sport_id": 3,
+    "sport_name": "Basketball",
+    "max_team_size": 5,
+    "min_team_size": 5,
+    "description": "Basketball with 5 players per team"
+  },
+  {
+    "sport_id": 4,
+    "sport_name": "Volleyball",
+    "max_team_size": 6,
+    "min_team_size": 6,
+    "description": "Volleyball with 6 players per team"
+  },
+  {
+    "sport_id": 5,
+    "sport_name": "Badminton Singles",
+    "max_team_size": 1,
+    "min_team_size": 1,
+    "description": "Individual badminton competition"
+  },
+  {
+    "sport_id": 6,
+    "sport_name": "Badminton Doubles",
+    "max_team_size": 2,
+    "min_team_size": 2,
+    "description": "Badminton doubles competition"
+  },
+  {
+    "sport_id": 7,
+    "sport_name": "Table Tennis Singles",
+    "max_team_size": 1,
+    "min_team_size": 1,
+    "description": "Individual table tennis competition"
+  },
+  {
+    "sport_id": 8,
+    "sport_name": "Table Tennis Doubles",
+    "max_team_size": 2,
+    "min_team_size": 2,
+    "description": "Table tennis doubles competition"
+  },
+  {
+    "sport_id": 9,
+    "sport_name": "Hockey",
+    "max_team_size": 11,
+    "min_team_size": 11,
+    "description": "Field hockey with 11 players per team"
+  },
+  {
+    "sport_id": 10,
+    "sport_name": "Kabaddi",
+    "max_team_size": 7,
+    "min_team_size": 7,
+    "description": "Kabaddi with 7 players per team"
+  }
+]

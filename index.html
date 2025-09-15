@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Cup Tournament 2024 - Inter-College Sports Competition</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-trophy"></i>
+                <span>College Cup 2024</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#sports" class="nav-link">Sports</a></li>
+                <li class="nav-item"><a href="#schedule" class="nav-link">Schedule</a></li>
+                <li class="nav-item"><a href="#standings" class="nav-link">Standings</a></li>
+                <li class="nav-item"><a href="#register" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="#admin" class="nav-link">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">College Cup Tournament 2024</h1>
+            <p class="hero-subtitle">India's Premier Inter-College Sports Competition</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-colleges">0</div>
+                    <div class="stat-label">Colleges</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-teams">0</div>
+                    <div class="stat-label">Teams</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-sports">10</div>
+                    <div class="stat-label">Sports</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-matches">0</div>
+                    <div class="stat-label">Matches</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#register" class="btn btn-primary">Register Your Team</a>
+                <a href="#sports" class="btn btn-secondary">View Sports</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Section -->
+    <section id="sports" class="sports-section">
+        <div class="container">
+            <h2 class="section-title">Tournament Sports</h2>
+            <p class="section-subtitle">Choose from 10 exciting sports categories</p>
+            <div class="sports-grid" id="sports-grid">
+                <!-- Sports will be loaded dynamically -->
+                <div class="loading">Loading sports...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule-section">
+        <div class="container">
+            <h2 class="section-title">Match Schedule</h2>
+            <div class="schedule-filters">
+                <select id="sport-filter" class="filter-select">
+                    <option value="">All Sports</option>
+                </select>
+                <input type="date" id="date-filter" class="filter-input">
+                <select id="status-filter" class="filter-select">
+                    <option value="">All Matches</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="ongoing">Ongoing</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+            <div class="schedule-container" id="schedule-container">
+                <div class="loading">Loading schedule...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standings Section -->
+    <section id="standings" class="standings-section">
+        <div class="container">
+            <h2 class="section-title">Tournament Standings</h2>
+            <div class="standings-tabs" id="standings-tabs">
+                <!-- Tabs will be loaded dynamically -->
+            </div>
+            <div class="standings-content" id="standings-content">
+                <div class="loading">Loading standings...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="register-section">
+        <div class="container">
+            <h2 class="section-title">Register Your Team</h2>
+            <p class="section-subtitle">Join the most prestigious inter-college tournament in India</p>
+            
+            <div class="register-tabs">
+                <button class="tab-btn active" data-tab="college">Register College</button>
+                <button class="tab-btn" data-tab="team">Register Team</button>
+            </div>
+
+            <!-- College Registration Form -->
+            <div class="tab-content active" id="college-tab">
+                <form id="college-form" class="form-card">
+                    <h3>College Registration</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="college-name">College Name *</label>
+                            <input type="text" id="college-name" name="college_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="college-code">College Code *</label>
+                            <input type="text" id="college-code" name="college_code" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="college-city">City *</label>
+                            <input type="text" id="college-city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="college-state">State *</label>
+                            <input type="text" id="college-state" name="state" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact-person">Contact Person *</label>
+                            <input type="text" id="contact-person" name="contact_person" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number *</label>
+                        <input type="tel" id="contact-phone" name="phone" pattern="[0-9]{10}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register College</button>
+                </form>
+            </div>
+
+            <!-- Team Registration Form -->
+            <div class="tab-content" id="team-tab">
+                <form id="team-form" class="form-card">
+                    <h3>Team Registration</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="team-college">College *</label>
+                            <select id="team-college" name="college_id" required>
+                                <option value="">Select College</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="team-sport">Sport *</label>
+                            <select id="team-sport" name="sport_id" required>
+                                <option value="">Select Sport</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="team-name">Team Name *</label>
+                        <input type="text" id="team-name" name="team_name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="captain-name">Captain Name *</label>
+                            <input type="text" id="captain-name" name="captain_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="captain-email">Captain Email *</label>
+                            <input type="email" id="captain-email" name="captain_email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="captain-phone">Captain Phone *</label>
+                        <input type="tel" id="captain-phone" name="captain_phone" pattern="[0-9]{10}" required>
+                    </div>
+                    
+                    <div class="players-section">
+                        <h4>Team Players</h4>
+                        <div id="players-container">
+                            <!-- Players will be added dynamically -->
+                        </div>
+                        <button type="button" id="add-player" class="btn btn-secondary">Add Player</button>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Register Team</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Section -->
+    <section id="admin" class="admin-section">
+        <div class="container">
+            <h2 class="section-title">Admin Dashboard</h2>
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+                <button class="tab-btn" data-tab="teams-admin">Teams</button>
+                <button class="tab-btn" data-tab="schedule-admin">Schedule</button>
+                <button class="tab-btn" data-tab="venues">Venues</button>
+            </div>
+
+            <div class="tab-content active" id="dashboard-tab">
+                <div class="admin-stats" id="admin-stats">
+                    <div class="loading">Loading dashboard...</div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="teams-admin-tab">
+                <div class="admin-controls">
+                    <h3>Team Management</h3>
+                    <div class="pending-teams" id="pending-teams">
+                        <div class="loading">Loading pending teams...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="schedule-admin-tab">
+                <div class="admin-controls">
+                    <h3>Schedule Management</h3>
+                    <button class="btn btn-primary" id="create-match">Create New Match</button>
+                    <div class="admin-schedule" id="admin-schedule">
+                        <div class="loading">Loading admin schedule...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="venues-tab">
+                <div class="admin-controls">
+                    <h3>Venue Management</h3>
+                    <div class="venues-list" id="venues-list">
+                        <div class="loading">Loading venues...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>College Cup 2024</h3>
+                    <p>India's premier inter-college sports tournament bringing together the best talents from across the nation.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#sports">Sports</a></li>
+                        <li><a href="#schedule">Schedule</a></li>
+                        <li><a href="#register">Register</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@collegecup2024.com</p>
+                    <p>Phone: +91-XXX-XXX-XXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 College Cup Tournament. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Modal -->
+    <div id="loading-modal" class="modal">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3 id="success-title">Success!</h3>
+            <p id="success-message"></p>
+            <button class="btn btn-primary" onclick="closeModal('success-modal')">OK</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-exclamation-circle error-icon"></i>
+            <h3>Error</h3>
+            <p id="error-message"></p>
+            <button class="btn btn-primary" onclick="closeModal('error-modal')">OK</button>
+        </div>
+    </div>
+
+    <!-- Match Creation Modal -->
+    <div id="match-modal" class="modal">
+        <div class="modal-content wide">
+            <h3>Create New Match</h3>
+            <form id="match-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="match-sport">Sport *</label>
+                        <select id="match-sport" name="sport_id" required>
+                            <option value="">Select Sport</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="match-type">Match Type *</label>
+                        <select id="match-type" name="match_type" required>
+                            <option value="group">Group Stage</option>
+                            <option value="quarter">Quarter Final</option>
+                            <option value="semi">Semi Final</option>
+                            <option value="final">Final</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="team1">Team 1 *</label>
+                        <select id="team1" name="team1_id" required>
+                            <option value="">Select Team 1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="team2">Team 2 *</label>
+                        <select id="team2" name="team2_id" required>
+                            <option value="">Select Team 2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="match-venue">Venue *</label>
+                        <select id="match-venue" name="venue_id" required>
+                            <option value="">Select Venue</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="match-date">Date *</label>
+                        <input type="date" id="match-date" name="match_date" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start-time">Start Time *</label>
+                        <input type="time" id="start-time" name="start_time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end-time">End Time *</label>
+                        <input type="time" id="end-time" name="end_time" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="referee-name">Referee Name</label>
+                    <input type="text" id="referee-name" name="referee_name">
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('match-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Match</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

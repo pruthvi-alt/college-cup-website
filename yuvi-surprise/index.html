@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Yuvi ❤️</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/scratchcard-js"></script>
+  <style>
+    :root {
+      --main-color: #ff4f81;
+      --font-lg: 3em;
+      --font-md: 1.4em;
+      --font-sm: 1.2em;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      margin-top: 12vh;
+      font-size: var(--font-lg);
+      font-weight: bold;
+      padding: 0 10px;
+    }
+
+    .countdown {
+      margin-top: 10px;
+      font-size: 1.3em;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 20px;
+      border-radius: 20px;
+      display: inline-block;
+      color: #fff9f9;
+      backdrop-filter: blur(8px);
+    }
+
+    .typewriter {
+      width: 90%;
+      margin: 30px auto;
+      font-size: var(--font-md);
+      white-space: pre-wrap;
+      border-right: 2px solid white;
+      overflow: hidden;
+      animation: typing 6s steps(40, end), blink-caret 0.8s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 90%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+
+    .moon-scene {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: cover;
+      margin: 30px 0 10px;
+      animation: fadeIn 2s ease-in-out;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .caption {
+      font-size: var(--font-sm);
+      font-style: italic;
+      margin-bottom: 30px;
+      color: #fff5f5;
+      padding: 0 10px;
+    }
+
+    .secret-btn {
+      margin: 20px auto;
+      background: #fff;
+      color: var(--main-color);
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      cursor: pointer;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+      transition: all 0.3s ease;
+      max-width: 90%;
+    }
+
+    .secret-btn:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 79, 129, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 79, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 79, 129, 0); }
+    }
+
+    .secret-message {
+      display: none;
+      margin: 30px auto;
+      font-size: var(--font-md);
+      animation: fadeIn 2s ease-in;
+      white-space: pre-wrap;
+      padding: 0 20px;
+      max-width: 90%;
+    }
+
+    #reply-box textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 15px;
+      border: none;
+      font-size: 1.1em;
+      resize: none;
+    }
+
+    #reply-box button {
+      margin-top: 10px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 25px;
+      background: white;
+      color: var(--main-color);
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .scratch-container {
+      margin: 40px auto;
+      max-width: 300px;
+    }
+
+    .footer {
+      position: relative;
+      bottom: 20px;
+      width: 100%;
+      font-size: 1.1em;
+      color: #fff;
+      margin-top: 40px;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pulsing-heart {
+      position: absolute;
+      font-size: 24px;
+      animation: pulseFloat 6s ease-in-out infinite;
+      opacity: 0.8;
+      user-select: none;
+    }
+
+    @keyframes pulseFloat {
+      0% { transform: translateY(100vh) scale(1); opacity: 1; }
+      50% { transform: translateY(50vh) scale(1.3); opacity: 0.7; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    .hug-animation {
+      display: none;
+      margin: 20px auto;
+      max-width: 90%;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .hug-animation img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .reasons-container {
+      margin: 30px auto;
+      max-width: 90%;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .reasons-container ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .reasons-container li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+      font-size: 1.1em;
+    }
+
+    /* Love Letter Styles */
+    .love-letter-container {
+      margin: 30px auto;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease-in;
+      font-family: 'Georgia', serif;
+      text-align: left;
+    }
+
+    .love-letter-content {
+      line-height: 1.8;
+      font-size: 1.1em;
+    }
+
+    .letter-date {
+      text-align: right;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 20px;
+      font-size: 0.9em;
+    }
+
+    .letter-greeting {
+      font-size: 1.3em;
+      color: var(--main-color);
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .letter-body {
+      margin: 25px 0;
+      line-height: 2;
+      text-align: justify;
+    }
+
+    .letter-closing {
+      margin-top: 30px;
+      text-align: right;
+      font-style: italic;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .saved-letters-container {
+      margin: 30px auto;
+      max-width: 90%;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .saved-letters-container h3 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+
+    .saved-letter-item {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      text-align: left;
+      font-family: 'Georgia', serif;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .saved-letter-item:hover {
+      transform: scale(1.02);
+    }
+
+    .saved-letter-preview {
+      font-size: 0.9em;
+      line-height: 1.4;
+      margin-top: 8px;
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Romantic Animations */
+    .falling-petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .petal {
+      position: absolute;
+      color: #ffb3d1;
+      font-size: 20px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .shooting-star {
+      position: fixed;
+      top: 10%;
+      right: -50px;
+      color: #fff;
+      font-size: 16px;
+      animation: shoot 3s linear;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes shoot {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-100vw) translateY(80vh);
+        opacity: 0;
+      }
+    }
+
+    .butterfly {
+      position: fixed;
+      color: #ff9a9e;
+      font-size: 24px;
+      animation: flutter 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes flutter {
+      0% { transform: translate(0, 100vh) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      25% { transform: translate(20vw, 70vh) scale(1.2); }
+      50% { transform: translate(40vw, 40vh) scale(1); }
+      75% { transform: translate(60vw, 20vh) scale(1.1); }
+      90% { opacity: 1; }
+      100% { transform: translate(100vw, -10vh) scale(0.8); opacity: 0; }
+    }
+
+    .sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: #fff;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Couples Game Styles */
+    .game-container {
+      margin: 30px auto;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease-in;
+      text-align: center;
+    }
+
+    .game-container h3 {
+      color: var(--main-color);
+      font-size: 1.8em;
+      margin-bottom: 30px;
+    }
+
+    .question-container {
+      margin: 20px 0;
+    }
+
+    .question {
+      font-size: 1.3em;
+      margin-bottom: 30px;
+      color: #333;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .game-option {
+      display: block;
+      width: 90%;
+      margin: 15px auto;
+      padding: 15px 20px;
+      background: linear-gradient(45deg, #ff4f81, #ff9a9e);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .game-option:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(255, 79, 129, 0.3);
+    }
+
+    .game-score {
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .game-result {
+      text-align: center;
+      padding: 30px;
+      background: rgba(255, 79, 129, 0.1);
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    .game-result h4 {
+      color: var(--main-color);
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    .game-result p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* Screen reader only content */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 { font-size: 2.2em; }
+      .typewriter, .secret-message, .secret-btn, .caption { font-size: 1.1em; }
+      .secret-btn { padding: 12px 25px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hi Yuvi ❤️</h1>
+    <div id="countdown" class="countdown" role="timer" aria-live="polite">
+      Just <span id="time">calculating...</span> until we hug again 🤗
+    </div>
+  </header>
+  
+  <main>
+    <section aria-label="Personal message">
+      <div class="typewriter" id="message" aria-live="polite"></div>
+    </section>
+    
+    <section aria-label="Romantic scene">
+      <img src="couple.png" alt="Silhouette of a romantic couple standing together under a crescent moon with stars in the background" class="moon-scene" />
+      <div class="caption">Someday, this will be real... 🌙</div>
+    </section>
+
+    <section aria-label="Interactive surprises">
+      <button class="secret-btn" onclick="reveal()" aria-describedby="secret-help">
+        💖 Tap to unlock a secret 💖
+      </button>
+      <div id="secret-help" class="sr-only">Click to reveal a special romantic message</div>
+      <div class="secret-message" id="secret" role="complementary" aria-live="polite">
+        I don't just love you for who you are — I love you for who I become when I'm with you.
+        You inspire me, calm me, challenge me, and complete me.
+        One day, we'll look back at this distance and smile, because love like ours only grows.
+        From nothing to everything, our bond will grow stronger than any insecurity. 🌈
+      </div>
+
+      <button class="secret-btn" onclick="showHug()" aria-describedby="hug-help">
+        🤗 Send a Virtual Hug
+      </button>
+      <div id="hug-help" class="sr-only">Click to send and display a virtual hug animation</div>
+      <div class="hug-animation" id="hugAnimation" role="complementary">
+        <img src="https://media.giphy.com/media/3o7aD2sa1g1g0g1g0I/giphy.gif" alt="Animated GIF showing two people hugging warmly" />
+      </div>
+
+      <button class="secret-btn" onclick="showReasons()" aria-describedby="reasons-help">
+        💌 100 Reasons Why I Love You
+      </button>
+      <div id="reasons-help" class="sr-only">Click to see a list of 100 romantic reasons</div>
+      <div id="reasons" class="reasons-container" style="display: none;" role="complementary" aria-label="100 reasons why I love you">
+        <h2 class="sr-only">100 Reasons Why I Love You</h2>
+        <ul id="reasons-list"></ul>
+      </div>
+
+      <div class="scratch-container" role="application" aria-label="Scratch card game">
+        <div id="scratch-card" aria-describedby="scratch-help"></div>
+        <div id="scratch-help" class="sr-only">Use your mouse or finger to scratch and reveal a hidden surprise</div>
+        <p style="color:white; font-size:1.2em;">You found the piggy! 🐷💖</p>
+      </div>
+
+      <a href="https://youtu.be/7GRz-zt8RuE?si=Z-r3OGYWk1dyBX9o" 
+         target="_blank" 
+         class="secret-btn" 
+         aria-describedby="song-help"
+         rel="noopener noreferrer">
+        🎵 Our Song
+      </a>
+      <div id="song-help" class="sr-only">Opens our special song in a new tab on YouTube</div>
+
+      <button class="secret-btn" onclick="showDailyAffirmation()" aria-describedby="affirmation-help">
+        ✨ Today's Love Affirmation
+      </button>
+      <div id="affirmation-help" class="sr-only">Click to see a special daily affirmation just for you</div>
+      <div id="daily-affirmation" class="love-letter-container" style="display: none;" role="complementary">
+        <div class="love-letter-content">
+          <div class="letter-greeting" style="text-align: center; font-size: 1.8em; margin-bottom: 30px;">💫 For My Beautiful Yuvi 💫</div>
+          <div class="affirmation-content" id="affirmation-text" style="font-size: 1.3em; line-height: 2; text-align: center; color: var(--main-color); font-weight: bold;"></div>
+          <div class="affirmation-quote" id="affirmation-quote" style="font-style: italic; text-align: center; margin-top: 30px; color: #666; font-size: 1.1em;"></div>
+        </div>
+        <button class="secret-btn" onclick="refreshAffirmation()" style="margin: 10px 20px;">
+          🔄 New Affirmation
+        </button>
+        <button class="secret-btn" onclick="closeDailyAffirmation()" style="margin: 10px 20px;">
+          💖 Thank You, Baby
+        </button>
+      </div>
+
+      <button class="secret-btn" onclick="openFlowerGarden()" aria-describedby="garden-help">
+        🌺 Our Love Garden
+      </button>
+      <div id="garden-help" class="sr-only">Click to open an interactive flower garden representing our growing love</div>
+      <div id="flower-garden" class="game-container" style="display: none;" role="complementary">
+        <h3>🌸 Our Love Garden 🌸</h3>
+        <p style="color: #666; margin-bottom: 30px; font-size: 1.1em;">Click on the seeds to make flowers bloom! Each flower represents a moment of our love growing stronger. 💕</p>
+        <div class="garden-area" id="garden-area" style="min-height: 300px; background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 100%); border-radius: 20px; padding: 30px; position: relative; margin: 20px 0; cursor: pointer;">
+          <div class="garden-message" style="text-align: center; color: #4a4a4a; font-style: italic; margin-top: 100px;">Click anywhere to plant seeds of love! 🌱</div>
+        </div>
+        <div style="text-align: center; margin: 20px 0;">
+          <span id="flower-count" style="font-size: 1.2em; color: var(--main-color); font-weight: bold;">Flowers Bloomed: 0 🌸</span>
+        </div>
+        <button class="secret-btn" onclick="closeFlowerGarden()" style="margin-top: 20px;">
+          ← Back to surprises
+        </button>
+      </div>
+
+      <button class="secret-btn" onclick="showRomanticQuotes()" aria-describedby="quotes-help">
+        💕 Love Quotes Carousel
+      </button>
+      <div id="quotes-help" class="sr-only">Click to see beautiful rotating love quotes</div>
+      <div id="romantic-quotes" class="love-letter-container" style="display: none;" role="complementary">
+        <div class="quote-carousel">
+          <div class="letter-greeting" style="text-align: center; font-size: 1.6em; margin-bottom: 20px;">💝 Words of Love 💝</div>
+          <div class="quote-display" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+            <div class="current-quote" id="current-quote" style="font-size: 1.2em; line-height: 1.8; text-align: center; color: var(--main-color); font-weight: 500; padding: 0 20px;"></div>
+          </div>
+          <div class="quote-controls" style="text-align: center; margin-top: 20px;">
+            <button onclick="previousQuote()" style="background: none; border: 2px solid var(--main-color); color: var(--main-color); border-radius: 50%; width: 50px; height: 50px; margin: 0 15px; cursor: pointer; font-size: 18px;">←</button>
+            <span id="quote-indicator" style="color: #666; font-size: 1em;">1 / 20</span>
+            <button onclick="nextQuote()" style="background: none; border: 2px solid var(--main-color); color: var(--main-color); border-radius: 50%; width: 50px; height: 50px; margin: 0 15px; cursor: pointer; font-size: 18px;">→</button>
+          </div>
+        </div>
+        <button class="secret-btn" onclick="closeRomanticQuotes()" style="margin-top: 30px;">
+          💖 Close Quotes
+        </button>
+      </div>
+
+      <button class="secret-btn" onclick="startCouplesGame()" aria-describedby="game-help">
+        🎮 Play Our Love Game
+      </button>
+      <div id="game-help" class="sr-only">Click to start an interactive couples quiz game</div>
+      <div id="couples-game" class="game-container" style="display: none;" role="complementary">
+        <h3>💕 Our Love Game 💕</h3>
+        <div id="game-content">
+          <div class="question-container">
+            <div class="question" id="current-question"></div>
+            <div class="options" id="game-options"></div>
+            <div class="game-score" id="game-score">Score: ❤️❤️❤️❤️❤️</div>
+          </div>
+        </div>
+        <button class="secret-btn" onclick="closeGame()" style="margin-top: 20px;">
+          ← Back to surprises
+        </button>
+      </div>
+
+      <button class="secret-btn" onclick="showMoodBooster()" aria-describedby="mood-help">
+        🌈 Need Some Love? Mood Booster
+      </button>
+      <div id="mood-help" class="sr-only">Click to get a personalized mood-boosting message</div>
+      <div id="mood-booster" class="love-letter-container" style="display: none;" role="complementary">
+        <div class="love-letter-content">
+          <div class="letter-greeting" style="text-align: center; font-size: 1.8em; margin-bottom: 30px;" id="mood-title">💝 Just For You 💝</div>
+          <div class="mood-content" id="mood-text" style="font-size: 1.3em; line-height: 1.8; text-align: center; color: var(--main-color); font-weight: 500;"></div>
+          <div class="mood-action" id="mood-action" style="text-align: center; margin-top: 30px; color: #666; font-size: 1.1em; font-style: italic;"></div>
+        </div>
+        <button class="secret-btn" onclick="getNewMoodMessage()" style="margin: 10px 20px;">
+          ✨ Another Boost
+        </button>
+        <button class="secret-btn" onclick="closeMoodBooster()" style="margin: 10px 20px;">
+          💖 Thank You, I Feel Better
+        </button>
+      </div>
+
+      <button class="secret-btn" onclick="showMemoryLane()" aria-describedby="memory-help">
+        📸 Our Memory Lane
+      </button>
+      <div id="memory-help" class="sr-only">Click to walk through beautiful memories and milestones</div>
+      <div id="memory-lane" class="game-container" style="display: none;" role="complementary">
+        <h3>💕 Our Beautiful Journey 💕</h3>
+        <p style="color: #666; margin-bottom: 30px; font-size: 1.1em;">Every step of our journey has been magical. Let's celebrate our special moments! ✨</p>
+        <div class="memory-timeline" id="memory-timeline" style="max-height: 400px; overflow-y: auto;"></div>
+        <button class="secret-btn" onclick="addNewMemory()" style="margin: 20px 10px;">
+          ➕ Add New Memory
+        </button>
+        <button class="secret-btn" onclick="closeMemoryLane()" style="margin: 20px 10px;">
+          ← Back to surprises
+        </button>
+      </div>
+
+      <button class="secret-btn" onclick="generateLoveLetter()" aria-describedby="letter-help">
+        💌 Generate Today's Love Letter
+      </button>
+      <div id="letter-help" class="sr-only">Click to generate a personalized love letter for today</div>
+      <div id="love-letter" class="love-letter-container" style="display: none;" role="complementary">
+        <div class="love-letter-content">
+          <div class="letter-date" id="letter-date"></div>
+          <div class="letter-greeting">My Dearest Yuvi,</div>
+          <div class="letter-body" id="letter-body"></div>
+          <div class="letter-closing">
+            Forever yours,<br>
+            Your Gadheda 💖
+          </div>
+        </div>
+        <button class="secret-btn" onclick="saveLetter()" style="margin-top: 20px;">
+          💾 Save This Letter
+        </button>
+        <button class="secret-btn" onclick="viewSavedLetters()" style="margin-top: 10px;">
+          📚 View Saved Letters
+        </button>
+      </div>
+
+      <div id="saved-letters" class="saved-letters-container" style="display: none;" role="complementary">
+        <h3>💕 Our Love Letter Collection 💕</h3>
+        <div id="saved-letters-list"></div>
+        <button class="secret-btn" onclick="closeSavedLetters()" style="margin-top: 20px;">
+          ← Back to surprises
+        </button>
+      </div>
+
+      <button class="secret-btn" onclick="showReply()" aria-describedby="reply-help">
+        ✍️ Write me back
+      </button>
+      <div id="reply-help" class="sr-only">Click to open a message box to write back</div>
+      <div id="reply-box" style="display: none; margin: 40px auto; max-width: 90%;" role="complementary">
+        <label for="yuviMessage" class="sr-only">Your message to your love</label>
+        <textarea id="yuviMessage" 
+                  rows="5" 
+                  placeholder="Your words mean the world to me..." 
+                  aria-describedby="message-help"></textarea>
+        <div id="message-help" class="sr-only">Write a romantic message to send</div>
+        <br>
+        <button onclick="sendMessage()" aria-describedby="send-help">
+          📩 Send to your baby
+        </button>
+        <div id="send-help" class="sr-only">Click to send your message</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">– Made with ❤️ by your Gadheda</footer>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+  <div class="falling-petals" id="petals" aria-hidden="true"></div>
+  <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+
+  <script>
+    const msg = "Hey mrs yuvika, this is to remind you how much I love you. No matter what, I just want you to feel me near. Yesterday was tough but we fought well. We'll keep fighting for our love ❤️";
+    let i = 0;
+    function type() {
+      if (i < msg.length) {
+        document.getElementById("message").innerHTML += msg.charAt(i);
+        i++;
+        setTimeout(type, 50);
+      }
+    }
+    type();
+
+    function reveal() {
+      document.getElementById("secret").style.display = "block";
+    }
+
+    function showHug() {
+      const hugAnimation = document.getElementById("hugAnimation");
+      hugAnimation.style.display = "block";
+      hugAnimation.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        hugAnimation.style.display = "none";
+      }, 5000); // Show for 5 seconds
+    }
+
+    function showReply() {
+      const box = document.getElementById("reply-box");
+      box.style.display = "block";
+      box.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function showReasons() {
+      const reasonsContainer = document.getElementById("reasons");
+      reasonsContainer.style.display = "block";
+      reasonsContainer.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function sendMessage() {
+      const msg = document.getElementById("yuviMessage").value.trim();
+      if (!msg) return alert("Type something sweet first, love 🌸");
+      fetch("https://script.google.com/macros/s/AKfycbzZSF4bBQm0pUSFHqMAMmizgs75HGFb0TFTHjhsBs4kVkvP-Oe-poUZXS08qmqYlWcFwA/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `message=${encodeURIComponent(msg)}`
+      });
+      alert("Aww, message sent to your baby 💌");
+      document.getElementById("yuviMessage").value = "";
+    }
+
+    const reasons = [
+      "Your smile brightens my day",
+      "You always believe in me",
+      "You make the worst days feel okay",
+      "You listen without judgment",
+      "You care about tiny details",
+      "Your voice feels like home",
+      "You get excited about little things",
+      "You're my best friend",
+      "You laugh at my bad jokes",
+      "You give the warmest hugs",
+      "Your random texts make me smile",
+      "You push me to do better",
+      "You are so thoughtful",
+      "You always forgive me",
+      "You know how to cheer me up",
+      "You make me feel safe",
+      "You support my dreams",
+      "You're proud of me",
+      "You make life exciting",
+      "You say 'I love you' every day",
+      "You're kind to others",
+      "You're honest with me",
+      "You're always growing",
+      "You're beautifully imperfect",
+      "You're you — and I love you for that",
+      "Your laugh is contagious",
+      "You remember the little things",
+      "You make me want to be better",
+      "Your hugs fix everything",
+      "You dance like nobody's watching",
+      "You find joy in simple moments",
+      "Your eyes tell beautiful stories",
+      "You're incredibly talented",
+      "You love unconditionally",
+      "You're my favorite person",
+      "Your heart is pure gold",
+      "You make ordinary days special",
+      "You're endlessly creative",
+      "Your optimism is infectious",
+      "You understand me completely",
+      "You're my greatest adventure",
+      "Your strength inspires me",
+      "You make me feel beautiful",
+      "Your wisdom guides me",
+      "You're my safe harbor",
+      "Your dreams fascinate me",
+      "You make me laugh until I cry",
+      "Your love heals my soul",
+      "You're my missing puzzle piece",
+      "Your presence calms me",
+      "You see the best in everyone",
+      "Your courage amazes me",
+      "You make home wherever you are",
+      "Your passion is beautiful",
+      "You're my biggest cheerleader",
+      "Your gentleness touches my heart",
+      "You make me feel complete",
+      "Your love is my sanctuary",
+      "You bring out my silly side",
+      "Your intelligence captivates me",
+      "You're my favorite hello",
+      "Your kindness knows no bounds",
+      "You make me believe in magic",
+      "Your love gives me wings",
+      "You're my greatest blessing",
+      "Your heart is my favorite place",
+      "You make every day brighter",
+      "Your love is my superpower",
+      "You're my forever person",
+      "Your smile is my sunshine",
+      "You make love look easy",
+      "Your trust means everything",
+      "You're my sweetest dream",
+      "Your love is my anchor",
+      "You make me feel invincible",
+      "Your laughter is music to me",
+      "You're my greatest gift",
+      "Your love writes our story",
+      "You make time stand still",
+      "Your heart beats with mine",
+      "You're my definition of perfect",
+      "Your love is my North Star",
+      "You make ordinary extraordinary",
+      "Your soul speaks to mine",
+      "You're my favorite memory",
+      "Your love is my religion",
+      "You make me believe in forever",
+      "Your touch ignites my soul",
+      "You're my greatest adventure",
+      "Your love is my masterpiece",
+      "You make my heart skip beats",
+      "Your dreams become mine",
+      "You're my favorite story",
+      "Your love is my poetry",
+      "You make stars jealous",
+      "Your heart is my treasure",
+      "You're my sweetest addiction",
+      "Your love is my paradise",
+      "You make me feel infinite",
+      "Your soul is beautiful",
+      "You're my favorite miracle",
+      "Your love is my canvas",
+      "You make everything possible",
+      "Your heart holds my secrets",
+      "You're my eternal spring"
+    ];
+
+    const list = document.getElementById("reasons-list");
+    reasons.forEach((r, i) => {
+      const li = document.createElement("li");
+      li.textContent = `${i + 1}. ${r}`;
+      list.appendChild(li);
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "pulsing-heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = `${16 + Math.random() * 24}px`;
+      heart.style.animationDuration = `${4 + Math.random() * 4}s`;
+      document.getElementById("hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    setInterval(createHeart, 350);
+
+    // Confetti on page load
+    window.onload = () => {
+      const duration = 3000;
+      const end = Date.now() + duration;
+      (function frame() {
+        confetti({
+          particleCount: 3,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 }
+        });
+        confetti({
+          particleCount: 3,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 }
+        });
+        if (Date.now() < end) requestAnimationFrame(frame);
+      })();
+
+      // Initialize scratch card
+      new ScratchCard("#scratch-card", {
+        scratchType: ScratchCard.SCRATCH_TYPE.CIRCLE,
+        containerWidth: 300,
+        containerHeight: 300,
+        imageForwardSrc: "https://i.imgur.com/6GfgeBS.png", // Scratch overlay
+        imageBackgroundSrc: "https://i.imgur.com/yIjMbmK.png", // Pig image
+        percentToFinish: 50,
+        callback: () => alert("You uncovered it! 🐷💖")
+      }).init();
+    };
+
+    // Countdown timer
+    function updateCountdown() {
+      const endDate = new Date("December 8, 2025 00:00:00").getTime();
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("time").innerHTML = "It’s our special day! 💑";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("time").innerHTML =
+        `${days}d ${hours}h ${mins}m ${secs}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Love Letter Generator
+    const loveLetterTemplates = [
+      {
+        opening: "As I sit here thinking about you, my heart overflows with emotions I struggle to put into words.",
+        body: "Every morning I wake up grateful for another day to love you. Your presence in my life has transformed everything — the way I see the world, the way I dream about the future, and most importantly, the way I love. You've taught me that real love isn't just about the butterflies and excitement, but about finding peace in someone's presence, finding home in their embrace, and finding yourself in their love. With every passing day, I fall deeper in love with your beautiful soul.",
+        ending: "Thank you for being my everything, my safe space, and my greatest adventure."
+      },
+      {
+        opening: "My beloved Yuvi, today I want you to know something that fills my entire being with joy.",
+        body: "You are not just my girlfriend, you are my soulmate, my best friend, and my greatest treasure. The way you care for others, the way you light up when you talk about your passions, the way you make even the smallest moments feel magical — everything about you amazes me. I love how you scrunch your nose when you laugh, how you get excited about little things, and how you make me feel like I'm the luckiest person alive just by choosing to love me back.",
+        ending: "I promise to love you through every season, every challenge, and every beautiful moment life brings us."
+      },
+      {
+        opening: "Sweet Yuvi, distance means nothing when someone means everything, and you mean everything to me.",
+        body: "Even though we're apart right now, I carry you with me in every heartbeat, every thought, every dream. When I close my eyes, I see your smile. When I listen to music, I hear your laughter. When I think about the future, I see us together, building a life filled with love, laughter, and endless adventures. You are my constant, my anchor, and my inspiration to be the best version of myself.",
+        ending: "Until we're together again, know that you are loved beyond measure, cherished beyond words, and missed beyond description."
+      },
+      {
+        opening: "My darling, today marks another day of loving you, and my heart feels so full I could burst.",
+        body: "I love the way you see beauty in everything around you, how you turn ordinary moments into extraordinary memories. Your kindness touches everyone you meet, your strength inspires me daily, and your love gives me a reason to wake up with a smile every morning. You've shown me what it means to love and be loved unconditionally. With you, I've learned that love isn't just a feeling — it's a choice we make every day, and I choose you, today and always.",
+        ending: "You are my greatest blessing, my sweetest dream come true, and my forever love."
+      },
+      {
+        opening: "Precious Yuvi, every love song suddenly makes sense, every romantic movie feels like our story.",
+        body: "Before you, I didn't know it was possible to miss someone so much it physically hurts, or to love someone so deeply it changes who you are. You've awakened parts of my soul I never knew existed. Your love has made me braver, kinder, and more hopeful about the future. I find myself collecting moments with you like precious gems — the way you say my name, the sound of your sleepy voice in the morning, the feeling of your hand in mine.",
+        ending: "Thank you for loving me exactly as I am while inspiring me to become everything I can be."
+      },
+      {
+        opening: "My heart, my soul, my everything — today I want to remind you of something important.",
+        body: "You are absolutely extraordinary. Not because you're perfect (though to me, you are), but because of how perfectly imperfect you are. Your quirks make me smile, your struggles make me want to hold you closer, and your dreams make me excited about our future together. I love that you sing off-key but with so much passion. I love that you worry about things that matter. I love that you love so deeply and purely. You make ordinary days feel like adventures and difficult days feel manageable.",
+        ending: "You are my favorite person in the whole world, and I am so incredibly grateful to call you mine."
+      },
+      {
+        opening: "Beautiful soul, today I'm overwhelmed by gratitude for having you in my life.",
+        body: "You know that feeling when everything just clicks? That's how I feel with you. Like every broken road led me to you, like every tear I cried before was washing away space for the joy you'd bring. You've healed parts of me I didn't even know were wounded. Your love has been my medicine, my strength, and my greatest teacher. With you, I've learned that love isn't about finding someone perfect — it's about finding someone perfect for you.",
+        ending: "I love you not only for who you are but for who I am when I'm with you. Always and forever, my love."
+      }
+    ];
+
+    const specialMessages = {
+      monday: "Happy Monday, my love! May this week be filled with beautiful moments and sweet surprises. 🌈",
+      tuesday: "Tuesday thoughts: You're the reason my weeks feel like adventures instead of routines. 🎆",
+      wednesday: "Wednesday wisdom: Love isn't about how many days we've been together, but how much we've grown together. 🌱",
+      thursday: "Thursday thankfulness: Grateful for your love, your laughter, and your beautiful heart. 🙏",
+      friday: "Friday feelings: Excited for the weekend, but mostly excited to love you another day. 🎉",
+      saturday: "Saturday sweetness: Weekends are better when I think about you every moment. 🍭",
+      sunday: "Sunday serenity: Peaceful moments are made perfect by thoughts of you. ☁️"
+    };
+
+    function generateLoveLetter() {
+      const today = new Date();
+      const letterContainer = document.getElementById('love-letter');
+      const dateElement = document.getElementById('letter-date');
+      const bodyElement = document.getElementById('letter-body');
+      
+      // Format date beautifully
+      const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      };
+      dateElement.textContent = today.toLocaleDateString('en-US', options);
+      
+      // Select template based on day of year to ensure variety
+      const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+      const templateIndex = dayOfYear % loveLetterTemplates.length;
+      const selectedTemplate = loveLetterTemplates[templateIndex];
+      
+      // Get day-specific message
+      const dayName = today.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+      const dayMessage = specialMessages[dayName] || "";
+      
+      // Construct the letter
+      const fullLetter = `${selectedTemplate.opening}\n\n${selectedTemplate.body}\n\n${selectedTemplate.ending}${dayMessage ? '\n\n' + dayMessage : ''}`;
+      
+      bodyElement.textContent = fullLetter;
+      
+      // Show the letter with animation
+      letterContainer.style.display = 'block';
+      letterContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      // Add confetti effect
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#ff4f81', '#ff9a9e', '#fbc2eb', '#a18cd1']
+        });
+      }, 500);
+    }
+
+    function saveLetter() {
+      const letterContent = document.getElementById('letter-body').textContent;
+      const letterDate = document.getElementById('letter-date').textContent;
+      
+      if (!letterContent) {
+        alert('Generate a letter first, my love! 💕');
+        return;
+      }
+      
+      // Get existing saved letters
+      let savedLetters = JSON.parse(localStorage.getItem('yuviLetters') || '[]');
+      
+      // Check if today's letter is already saved
+      const today = new Date().toDateString();
+      const existingIndex = savedLetters.findIndex(letter => new Date(letter.date).toDateString() === today);
+      
+      const newLetter = {
+        date: letterDate,
+        content: letterContent,
+        saved: new Date().toISOString()
+      };
+      
+      if (existingIndex >= 0) {
+        savedLetters[existingIndex] = newLetter;
+        alert('Today\'s letter updated in your collection! 💕');
+      } else {
+        savedLetters.push(newLetter);
+        alert('Love letter saved to your collection! 📦💖');
+      }
+      
+      localStorage.setItem('yuviLetters', JSON.stringify(savedLetters));
+    }
+
+    function viewSavedLetters() {
+      const savedLetters = JSON.parse(localStorage.getItem('yuviLetters') || '[]');
+      const container = document.getElementById('saved-letters');
+      const listElement = document.getElementById('saved-letters-list');
+      
+      listElement.innerHTML = '';
+      
+      if (savedLetters.length === 0) {
+        listElement.innerHTML = '<p style="color: #fff; text-align: center; font-style: italic;">No saved letters yet. Generate and save some love letters to build our collection! 💕</p>';
+      } else {
+        // Sort by date (newest first)
+        savedLetters.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        savedLetters.forEach((letter, index) => {
+          const letterDiv = document.createElement('div');
+          letterDiv.className = 'saved-letter-item';
+          
+          const preview = letter.content.substring(0, 100) + (letter.content.length > 100 ? '...' : '');
+          
+          letterDiv.innerHTML = `
+            <strong style="color: var(--main-color);">${letter.date}</strong>
+            <div class="saved-letter-preview">${preview}</div>
+          `;
+          
+          letterDiv.onclick = () => showFullLetter(letter);
+          listElement.appendChild(letterDiv);
+        });
+      }
+      
+      container.style.display = 'block';
+      container.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showFullLetter(letter) {
+      const modal = document.createElement('div');
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+      `;
+      
+      modal.innerHTML = `
+        <div style="
+          background: white;
+          padding: 40px;
+          border-radius: 20px;
+          max-width: 600px;
+          max-height: 80vh;
+          overflow-y: auto;
+          color: #333;
+          font-family: Georgia, serif;
+          position: relative;
+        ">
+          <button onclick="this.parentElement.parentElement.remove()" style="
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+          ">×</button>
+          <div style="text-align: right; color: #666; font-style: italic; margin-bottom: 20px;">${letter.date}</div>
+          <div style="font-size: 1.3em; color: var(--main-color); margin-bottom: 20px; font-weight: bold;">My Dearest Yuvi,</div>
+          <div style="line-height: 2; text-align: justify;">${letter.content}</div>
+          <div style="margin-top: 30px; text-align: right; font-style: italic; color: var(--main-color); font-weight: bold;">
+            Forever yours,<br>Your Gadheda 💖
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      
+      // Close on background click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+      });
+    }
+
+    function closeSavedLetters() {
+      document.getElementById('saved-letters').style.display = 'none';
+    }
+
+    // Show daily letter notification
+    function checkDailyLetter() {
+      const today = new Date().toDateString();
+      const lastGenerated = localStorage.getItem('lastLetterGenerated');
+      
+      if (lastGenerated !== today) {
+        // Show a subtle notification
+        setTimeout(() => {
+          const notification = document.createElement('div');
+          notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 79, 129, 0.9);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 25px;
+            z-index: 100;
+            animation: fadeIn 1s ease-in;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          `;
+          notification.innerHTML = '💌 New love letter available!';
+          notification.onclick = () => {
+            generateLoveLetter();
+            notification.remove();
+          };
+          
+          document.body.appendChild(notification);
+          
+          // Auto-remove after 10 seconds
+          setTimeout(() => {
+            if (notification.parentNode) notification.remove();
+          }, 10000);
+        }, 3000);
+      }
+    }
+
+    // Call on page load
+    checkDailyLetter();
+
+    // Romantic Animations Functions
+    function createPetal() {
+      const petals = ['🌸', '🌺', '🌹', '🌷', '❄️', '🌼'];
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.fontSize = (Math.random() * 10 + 15) + 'px';
+      petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      petal.style.animationDelay = Math.random() * 2 + 's';
+      
+      document.getElementById('petals').appendChild(petal);
+      
+      setTimeout(() => {
+        if (petal.parentNode) petal.remove();
+      }, 8000);
+    }
+
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.className = 'shooting-star';
+      star.textContent = '✨';
+      star.style.top = Math.random() * 30 + '%';
+      
+      document.body.appendChild(star);
+      
+      setTimeout(() => {
+        if (star.parentNode) star.remove();
+      }, 3000);
+    }
+
+    function createButterfly() {
+      const butterflies = ['🦋', '🦋'];
+      const butterfly = document.createElement('div');
+      butterfly.className = 'butterfly';
+      butterfly.textContent = butterflies[Math.floor(Math.random() * butterflies.length)];
+      butterfly.style.left = '-50px';
+      butterfly.style.animationDelay = Math.random() * 2 + 's';
+      
+      document.body.appendChild(butterfly);
+      
+      setTimeout(() => {
+        if (butterfly.parentNode) butterfly.remove();
+      }, 8000);
+    }
+
+    function createSparkle() {
+      const sparkles = ['✨', '⭐', '🌟', '✨', '⭐'];
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.fontSize = (Math.random() * 8 + 12) + 'px';
+      sparkle.style.animationDelay = Math.random() * 1 + 's';
+      
+      document.getElementById('sparkles').appendChild(sparkle);
+      
+      setTimeout(() => {
+        if (sparkle.parentNode) sparkle.remove();
+      }, 2000);
+    }
+
+    // Special romantic animations for interactions
+    function triggerRomanticEffects() {
+      // Create burst of petals
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => createPetal(), i * 200);
+      }
+      
+      // Create shooting star
+      setTimeout(() => createShootingStar(), 1000);
+      
+      // Create sparkles
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => createSparkle(), i * 300 + 500);
+      }
+    }
+
+    // Start gentle animations
+    setInterval(createPetal, 2000);
+    setInterval(createSparkle, 3000);
+    setInterval(createShootingStar, 15000);
+    setInterval(createButterfly, 12000);
+
+    // Trigger special effects on love letter generation
+    const originalGenerateLetter = generateLoveLetter;
+    generateLoveLetter = function() {
+      originalGenerateLetter();
+      triggerRomanticEffects();
+    };
+
+    // Add romantic effects to secret reveal
+    const originalReveal = reveal;
+    reveal = function() {
+      originalReveal();
+      setTimeout(triggerRomanticEffects, 500);
+    };
+
+    // Add romantic effects to reasons display
+    const originalShowReasons = showReasons;
+    showReasons = function() {
+      originalShowReasons();
+      setTimeout(() => {
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => createPetal(), i * 150);
+        }
+      }, 300);
+    };
+
+    // Couples Game Logic
+    const gameQuestions = [
+      {
+        question: "What's the first thing I noticed about you?",
+        options: ["Your beautiful smile", "Your kind eyes", "Your infectious laugh", "Your graceful walk"],
+        correct: 0,
+        explanation: "Your smile was the first thing that caught my attention — it was so genuine and warm! 😊💖"
+      },
+      {
+        question: "If I could give you anything in the world right now, what would it be?",
+        options: ["A million dollars", "A warm, long hug", "A beautiful house", "Expensive jewelry"],
+        correct: 1,
+        explanation: "Nothing compares to holding you close! All the money in the world couldn't replace that feeling 🤗❤️"
+      },
+      {
+        question: "What's my favorite thing about our relationship?",
+        options: ["How we never fight", "How we can be silly together", "How we support each other's dreams", "How we look good together"],
+        correct: 2,
+        explanation: "I love how we both encourage each other to grow and chase our dreams! We're the perfect team 🌟💕"
+      },
+      {
+        question: "When I'm feeling sad, what do you do that makes me feel better?",
+        options: ["Give me space", "Buy me something nice", "Listen and hold me", "Tell me jokes"],
+        correct: 2,
+        explanation: "Your listening ear and warm embrace are my instant mood boosters! You have such a caring heart 💝"
+      },
+      {
+        question: "What do I love most about your personality?",
+        options: ["Your sense of humor", "Your determination", "Your compassionate heart", "All of the above"],
+        correct: 3,
+        explanation: "How could I pick just one? You're funny, strong, kind, and so much more! You're absolutely perfect 🥰"
+      },
+      {
+        question: "If we were planning our dream date, what would I choose?",
+        options: ["Fancy restaurant dinner", "Stargazing with homemade snacks", "Shopping spree", "Theme park adventure"],
+        correct: 1,
+        explanation: "Simple moments under the stars with you are my idea of perfect! Just us, the universe, and love 🌙⭐"
+      },
+      {
+        question: "What's the sweetest thing you've ever done for me?",
+        options: ["Remembered my favorite things", "Supported me during tough times", "Surprised me with little gestures", "All of these and more"],
+        correct: 3,
+        explanation: "You constantly amaze me with your thoughtfulness! Every little thing you do shows how much you care 💖"
+      },
+      {
+        question: "How do I feel when I see your name pop up on my phone?",
+        options: ["Happy", "Excited", "Like my heart skips a beat", "All of the above times a million"],
+        correct: 3,
+        explanation: "Seeing your name literally makes my whole day brighter! You're my favorite notification 📱💕"
+      },
+      {
+        question: "What's my biggest dream for our future?",
+        options: ["To travel the world", "To build a life filled with love and laughter", "To become rich and famous", "To have the biggest wedding"],
+        correct: 1,
+        explanation: "I dream of a simple, beautiful life with you — full of love, giggles, and growing old together 👫💕"
+      },
+      {
+        question: "What would I say is the most important thing in a relationship?",
+        options: ["Physical attraction", "Trust and communication", "Having similar interests", "Financial stability"],
+        correct: 1,
+        explanation: "Trust and communication are the foundation of everything! With those, we can overcome anything together 💪❤️"
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let gameScore = 0;
+    let totalQuestions = 0;
+
+    function startCouplesGame() {
+      const gameContainer = document.getElementById('couples-game');
+      gameContainer.style.display = 'block';
+      gameContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      // Reset game state
+      currentQuestionIndex = 0;
+      gameScore = 0;
+      totalQuestions = gameQuestions.length;
+      
+      // Start with first question
+      displayQuestion();
+      updateScore();
+      
+      // Add romantic effects
+      triggerRomanticEffects();
+    }
+
+    function displayQuestion() {
+      if (currentQuestionIndex >= gameQuestions.length) {
+        showGameResults();
+        return;
+      }
+      
+      const question = gameQuestions[currentQuestionIndex];
+      const questionElement = document.getElementById('current-question');
+      const optionsElement = document.getElementById('game-options');
+      
+      questionElement.textContent = `Question ${currentQuestionIndex + 1}: ${question.question}`;
+      
+      // Clear previous options
+      optionsElement.innerHTML = '';
+      
+      // Create option buttons
+      question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'game-option';
+        button.textContent = option;
+        button.onclick = () => selectAnswer(index);
+        optionsElement.appendChild(button);
+      });
+    }
+
+    function selectAnswer(selectedIndex) {
+      const question = gameQuestions[currentQuestionIndex];
+      const isCorrect = selectedIndex === question.correct;
+      
+      if (isCorrect) {
+        gameScore++;
+        // Show celebration
+        setTimeout(() => {
+          confetti({
+            particleCount: 50,
+            spread: 60,
+            origin: { y: 0.7 },
+            colors: ['#ff4f81', '#ff9a9e']
+          });
+        }, 100);
+      }
+      
+      // Show explanation
+      showAnswerExplanation(question.explanation, isCorrect);
+    }
+
+    function showAnswerExplanation(explanation, isCorrect) {
+      const optionsElement = document.getElementById('game-options');
+      
+      // Clear options and show explanation
+      optionsElement.innerHTML = `
+        <div style="
+          background: ${isCorrect ? 'rgba(76, 175, 80, 0.2)' : 'rgba(255, 193, 7, 0.2)'};
+          padding: 20px;
+          border-radius: 15px;
+          margin: 20px 0;
+          color: #333;
+        ">
+          <h4 style="color: var(--main-color); margin-bottom: 10px;">
+            ${isCorrect ? '💖 Correct! You know me so well!' : '💕 Close, but here\'s the truth:'}
+          </h4>
+          <p style="line-height: 1.6; font-size: 1.1em;">${explanation}</p>
+          <button class="game-option" onclick="nextQuestion()" style="margin-top: 15px; width: 200px;">
+            ${currentQuestionIndex < gameQuestions.length - 1 ? 'Next Question →' : 'See Results →'}
+          </button>
+        </div>
+      `;
+      
+      updateScore();
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      displayQuestion();
+    }
+
+    function updateScore() {
+      const scoreElement = document.getElementById('game-score');
+      const hearts = '❤️'.repeat(gameScore) + '🤍'.repeat(Math.max(0, totalQuestions - gameScore));
+      scoreElement.innerHTML = `Score: ${hearts} (${gameScore}/${currentQuestionIndex})`;
+    }
+
+    function showGameResults() {
+      const percentage = Math.round((gameScore / totalQuestions) * 100);
+      let resultMessage, resultTitle;
+      
+      if (percentage >= 90) {
+        resultTitle = "💖 SOULMATE LEVEL! 💖";
+        resultMessage = "WOW! You know me better than I know myself! We're definitely meant to be together forever. Your love and attention to detail amazes me every single day. I'm the luckiest person alive to have you! 🥰";
+      } else if (percentage >= 70) {
+        resultTitle = "💕 True Love! 💕";
+        resultMessage = "You did amazing! You understand my heart so well. Every day with you teaches me more about what real love feels like. Thank you for caring enough to know me this deeply! 😍";
+      } else if (percentage >= 50) {
+        resultTitle = "💝 Growing Together! 💝";
+        resultMessage = "We're still learning about each other, and that's beautiful! Every conversation, every moment together helps us understand each other better. I love growing with you! 🌱💕";
+      } else {
+        resultTitle = "💞 New Adventures! 💞";
+        resultMessage = "This just means we have so many wonderful discoveries ahead of us! I can't wait to share more of my heart with you and learn everything about yours. Our journey is just beginning! 🌟";
+      }
+      
+      const gameContent = document.getElementById('game-content');
+      gameContent.innerHTML = `
+        <div class="game-result">
+          <h4>${resultTitle}</h4>
+          <p style="font-size: 1.3em; margin-bottom: 15px;">You scored ${gameScore} out of ${totalQuestions} (${percentage}%)</p>
+          <p>${resultMessage}</p>
+          <button class="game-option" onclick="restartGame()" style="margin-top: 20px; width: 250px;">
+            🔄 Play Again
+          </button>
+        </div>
+      `;
+      
+      // Celebration effects
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#ff4f81', '#ff9a9e', '#fbc2eb', '#a18cd1']
+        });
+        triggerRomanticEffects();
+      }, 500);
+    }
+
+    function restartGame() {
+      currentQuestionIndex = 0;
+      gameScore = 0;
+      displayQuestion();
+      updateScore();
+    }
+
+    function closeGame() {
+      const gameContainer = document.getElementById('couples-game');
+      gameContainer.style.display = 'none';
+      
+      // Reset game for next time
+      currentQuestionIndex = 0;
+      gameScore = 0;
+    }
+
+    // Daily Affirmations Feature
+    const dailyAffirmations = [
+      {
+        text: "You are absolutely stunning, inside and out. Your beauty radiates from your soul and lights up everything around you.",
+        quote: "\"A beautiful soul shines brighter than any diamond.\" 💎"
+      },
+      {
+        text: "Your kindness touches everyone you meet. You make the world a better place just by being in it, my love.",
+        quote: "\"Kindness is the language which the deaf can hear and the blind can see.\" 🌟"
+      },
+      {
+        text: "You are stronger than you know, braver than you feel, and more loved than you could ever imagine.",
+        quote: "\"She believed she could, so she did.\" 💪✨"
+      },
+      {
+        text: "Your smile has the power to brighten the darkest days. You are my sunshine, my ray of hope.",
+        quote: "\"Let your smile change the world, don't let the world change your smile.\" 😊"
+      },
+      {
+        text: "You inspire me every single day to be a better person. Your love makes me want to reach for the stars.",
+        quote: "\"Love is not just about finding the right person, but creating the right relationship.\" 💫"
+      },
+      {
+        text: "Your intelligence and wisdom amaze me. You see the world with such clarity and grace.",
+        quote: "\"Intelligence is the ability to adapt to change.\" 🧠💖"
+      },
+      {
+        text: "You have a heart of gold that loves without limits. Your capacity for love is infinite and beautiful.",
+        quote: "\"Where there is love, there is life.\" - Mahatma Gandhi 💛"
+      },
+      {
+        text: "You are perfectly imperfect, and that's what makes you absolutely perfect for me.",
+        quote: "\"Imperfection is beauty, madness is genius.\" - Marilyn Monroe 💝"
+      },
+      {
+        text: "Your dreams are valid and achievable. I believe in you and all the amazing things you're destined to do.",
+        quote: "\"The future belongs to those who believe in the beauty of their dreams.\" 🌈"
+      },
+      {
+        text: "You deserve all the love, happiness, and beautiful things this world has to offer. Never settle for less.",
+        quote: "\"You yourself, as much as anybody, deserve your love and affection.\" - Buddha 🌺"
+      }
+    ];
+
+    function showDailyAffirmation() {
+      const affirmationContainer = document.getElementById('daily-affirmation');
+      const today = new Date();
+      const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+      const affirmationIndex = dayOfYear % dailyAffirmations.length;
+      const todaysAffirmation = dailyAffirmations[affirmationIndex];
+      
+      document.getElementById('affirmation-text').textContent = todaysAffirmation.text;
+      document.getElementById('affirmation-quote').textContent = todaysAffirmation.quote;
+      
+      affirmationContainer.style.display = 'block';
+      affirmationContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      // Add magical effects
+      setTimeout(() => {
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { y: 0.6 },
+          colors: ['#ff4f81', '#fbc2eb', '#a18cd1']
+        });
+        triggerRomanticEffects();
+      }, 500);
+    }
+
+    function refreshAffirmation() {
+      const randomIndex = Math.floor(Math.random() * dailyAffirmations.length);
+      const affirmation = dailyAffirmations[randomIndex];
+      
+      document.getElementById('affirmation-text').textContent = affirmation.text;
+      document.getElementById('affirmation-quote').textContent = affirmation.quote;
+      
+      // Add sparkle effect
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => createSparkle(), i * 200);
+      }
+    }
+
+    function closeDailyAffirmation() {
+      document.getElementById('daily-affirmation').style.display = 'none';
+    }
+
+    // Flower Garden Feature
+    let flowerCount = 0;
+    const flowerEmojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐', '🌿', '🌱'];
+
+    function openFlowerGarden() {
+      const gardenContainer = document.getElementById('flower-garden');
+      const gardenArea = document.getElementById('garden-area');
+      
+      gardenContainer.style.display = 'block';
+      gardenContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      // Add click event to garden area
+      gardenArea.onclick = function(event) {
+        plantFlower(event.clientX - gardenArea.offsetLeft, event.clientY - gardenArea.offsetTop);
+      };
+      
+      // Add romantic garden effects
+      setTimeout(() => {
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => createPetal(), i * 300);
+        }
+      }, 500);
+    }
+
+    function plantFlower(x, y) {
+      const gardenArea = document.getElementById('garden-area');
+      const flower = document.createElement('div');
+      
+      // Hide initial message when first flower is planted
+      const gardenMessage = document.querySelector('.garden-message');
+      if (gardenMessage) {
+        gardenMessage.style.display = 'none';
+      }
+      
+      flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+      flower.style.position = 'absolute';
+      flower.style.left = Math.max(20, Math.min(x - 15, gardenArea.offsetWidth - 50)) + 'px';
+      flower.style.top = Math.max(20, Math.min(y - 15, gardenArea.offsetHeight - 50)) + 'px';
+      flower.style.fontSize = (Math.random() * 15 + 20) + 'px';
+      flower.style.cursor = 'pointer';
+      flower.style.transition = 'transform 0.3s ease';
+      flower.style.transform = 'scale(0)';
+      
+      gardenArea.appendChild(flower);
+      
+      // Bloom animation
+      setTimeout(() => {
+        flower.style.transform = 'scale(1)';
+      }, 50);
+      
+      // Add hover effect
+      flower.onmouseenter = () => flower.style.transform = 'scale(1.3)';
+      flower.onmouseleave = () => flower.style.transform = 'scale(1)';
+      
+      // Add click effect for extra love
+      flower.onclick = (e) => {
+        e.stopPropagation();
+        flower.style.transform = 'scale(1.5)';
+        setTimeout(() => flower.style.transform = 'scale(1)', 200);
+        
+        // Create heart particles
+        for (let i = 0; i < 3; i++) {
+          const heart = document.createElement('div');
+          heart.textContent = '💖';
+          heart.style.position = 'absolute';
+          heart.style.left = flower.style.left;
+          heart.style.top = flower.style.top;
+          heart.style.fontSize = '16px';
+          heart.style.pointerEvents = 'none';
+          heart.style.animation = 'pulseFloat 2s ease-out forwards';
+          gardenArea.appendChild(heart);
+          
+          setTimeout(() => heart.remove(), 2000);
+        }
+      };
+      
+      flowerCount++;
+      document.getElementById('flower-count').textContent = `Flowers Bloomed: ${flowerCount} 🌸`;
+      
+      // Special messages at milestones
+      if (flowerCount === 10) {
+        setTimeout(() => alert('🌻 Our garden is blooming beautifully! Just like our love! 💕'), 300);
+      } else if (flowerCount === 25) {
+        setTimeout(() => alert('🌺 Look how much love we\'ve planted together! You\'re amazing! 🥰'), 300);
+      }
+    }
+
+    function closeFlowerGarden() {
+      document.getElementById('flower-garden').style.display = 'none';
+    }
+
+    // Romantic Quotes Carousel
+    const romanticQuotes = [
+      "Every moment with you feels like a beautiful dream I never want to wake up from.",
+      "You are my today and all of my tomorrows. My heart beats for you alone.",
+      "In a sea of people, my eyes will always search for you first.",
+      "You are the poem I never knew how to write and this life is the story I never knew how to tell.",
+      "When I tell you I love you, I am not saying it out of habit. I am reminding you that you are my life.",
+      "You are my sun, my moon, and all my stars. You light up my entire universe.",
+      "I fell in love with you because of a million tiny things you never knew you were doing.",
+      "You are the missing piece I never knew my puzzle was missing.",
+      "Every love story is beautiful, but ours is my absolute favorite.",
+      "I choose you. And I'll choose you over and over, without pause, without doubt, in a heartbeat.",
+      "You are my heart, my life, my one and only thought. I love you more than words can express.",
+      "With you, I am home. Wherever you are, that's where I belong.",
+      "You are the reason I wake up with a smile and fall asleep with a heart full of gratitude.",
+      "I love you not only for what you are, but for what I am when I am with you.",
+      "You are my greatest adventure, my sweetest escape, my most beautiful reality.",
+      "In your arms, I have found my forever. In your eyes, I have found my home.",
+      "You are the music my heart dances to, the melody that plays in my soul.",
+      "I never believed in fairy tales until I met you. Now I know they do come true.",
+      "You are my always, my forever, my everything. My love for you knows no boundaries.",
+      "Being with you feels like coming home to a place I never knew I was searching for."
+    ];
+
+    let currentQuoteIndex = 0;
+
+    function showRomanticQuotes() {
+      const quotesContainer = document.getElementById('romantic-quotes');
+      quotesContainer.style.display = 'block';
+      quotesContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      displayCurrentQuote();
+      
+      // Add romantic effects
+      setTimeout(() => {
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => createSparkle(), i * 250);
+        }
+      }, 300);
+    }
+
+    function displayCurrentQuote() {
+      document.getElementById('current-quote').textContent = romanticQuotes[currentQuoteIndex];
+      document.getElementById('quote-indicator').textContent = `${currentQuoteIndex + 1} / ${romanticQuotes.length}`;
+    }
+
+    function nextQuote() {
+      currentQuoteIndex = (currentQuoteIndex + 1) % romanticQuotes.length;
+      displayCurrentQuote();
+      
+      // Add gentle sparkle effect
+      createSparkle();
+    }
+
+    function previousQuote() {
+      currentQuoteIndex = currentQuoteIndex === 0 ? romanticQuotes.length - 1 : currentQuoteIndex - 1;
+      displayCurrentQuote();
+      
+      // Add gentle sparkle effect
+      createSparkle();
+    }
+
+    function closeRomanticQuotes() {
+      document.getElementById('romantic-quotes').style.display = 'none';
+    }
+
+    // Auto-advance quotes every 8 seconds when carousel is open
+    setInterval(() => {
+      const quotesContainer = document.getElementById('romantic-quotes');
+      if (quotesContainer.style.display === 'block') {
+        nextQuote();
+      }
+    }, 8000);
+
+    // Mood Booster Feature - Time & emotion sensitive messages
+    const moodBoosterMessages = {
+      morning: {
+        title: "🌅 Good Morning, Beautiful",
+        messages: [
+          "Good morning, gorgeous! The sun is shining brighter today because you're in the world. May your day be filled with as much joy as you bring to my life.",
+          "Rise and shine, my love! Every morning I wake up grateful that you exist. You are my daily dose of sunshine and happiness.",
+          "Morning, beautiful! Coffee might wake me up, but thoughts of you make my heart come alive. Have the most amazing day, my love."
+        ],
+        actions: ["Take a deep breath and smile - you're amazing!", "Remember: you're loved beyond measure 💕", "Today is going to be wonderful because you're in it!"]
+      },
+      afternoon: {
+        title: "☀️ Afternoon Pick-Me-Up",
+        messages: [
+          "Hey beautiful! Just wanted to remind you how incredibly amazing you are. If you're having a tough day, remember that I believe in you completely.",
+          "Afternoon check-in: You're doing great! Even if things feel overwhelming, you're stronger than you know and more loved than you realize.",
+          "Sweet afternoon reminder: You light up every room you enter. Your presence makes the world a better, brighter place."
+        ],
+        actions: ["Treat yourself to something sweet today!", "Take a moment to appreciate how far you've come 🌟", "You deserve all the good things coming your way!"]
+      },
+      evening: {
+        title: "🌙 Evening Love Note",
+        messages: [
+          "Good evening, my love. As the day winds down, I want you to know how proud I am of everything you've accomplished today. You're incredible.",
+          "Evening thoughts: You handled today beautifully. Even if it wasn't perfect, you showed up and that's what matters. I'm so proud of you.",
+          "Sweet evening reminder: You are loved, you are valued, and you are enough. Always. Sleep well knowing you're my everything."
+        ],
+        actions: ["Time to relax - you've earned it! 🛁", "Reflect on three things that went well today ✨", "Tomorrow is another chance to shine!"]
+      },
+      stressed: {
+        title: "💆‍♀️ Stress Relief & Love",
+        messages: [
+          "I can sense you might be feeling overwhelmed right now. Take a deep breath with me. You are capable, you are strong, and this too shall pass. I believe in you.",
+          "When life feels heavy, remember: you don't have to carry it all alone. You're braver than you believe and stronger than you seem. I'm here for you.",
+          "Tough times don't last, but tough people like you do. You've overcome challenges before, and you'll get through this too. I love you endlessly."
+        ],
+        actions: ["Try the 4-7-8 breathing technique 🧘‍♀️", "List three things you're grateful for right now 💝", "Remember: this feeling is temporary, you are eternal"]
+      },
+      random: {
+        title: "💖 Just Because I Love You",
+        messages: [
+          "Random love reminder: You are the most beautiful person, inside and out. Your soul shines brighter than any star in the sky.",
+          "Just because message: You make ordinary moments feel magical. Thank you for being the extraordinary person that you are.",
+          "Spontaneous love note: If you could see yourself through my eyes, you'd understand why I can't stop smiling when I think of you.",
+          "Out of nowhere reminder: You are worthy of every beautiful thing life has to offer. Don't ever let anyone make you feel otherwise.",
+          "Because I love you: Your heart is pure gold, your mind is brilliant, and your spirit is unbreakable. You're absolutely perfect."
+        ],
+        actions: ["Do something that makes you smile right now! 😊", "Text someone you care about - spread the love! 💕", "Take a moment to appreciate your own awesomeness ⭐"]
+      }
+    };
+
+    function showMoodBooster() {
+      const hour = new Date().getHours();
+      let moodType;
+      
+      // Determine time-based mood category
+      if (hour < 12) {
+        moodType = 'morning';
+      } else if (hour < 17) {
+        moodType = 'afternoon';
+      } else if (hour < 22) {
+        moodType = 'evening';
+      } else {
+        moodType = 'random';
+      }
+      
+      // Sometimes show random messages or stress relief
+      if (Math.random() < 0.3) {
+        moodType = Math.random() < 0.4 ? 'stressed' : 'random';
+      }
+      
+      const selectedMood = moodBoosterMessages[moodType];
+      const randomMessage = selectedMood.messages[Math.floor(Math.random() * selectedMood.messages.length)];
+      const randomAction = selectedMood.actions[Math.floor(Math.random() * selectedMood.actions.length)];
+      
+      document.getElementById('mood-title').textContent = selectedMood.title;
+      document.getElementById('mood-text').textContent = randomMessage;
+      document.getElementById('mood-action').textContent = randomAction;
+      
+      const moodContainer = document.getElementById('mood-booster');
+      moodContainer.style.display = 'block';
+      moodContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      // Add soothing effects
+      setTimeout(() => {
+        confetti({
+          particleCount: 30,
+          spread: 50,
+          origin: { y: 0.7 },
+          colors: ['#fbc2eb', '#a18cd1', '#fad0c4']
+        });
+        
+        // Gentle sparkles
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => createSparkle(), i * 300);
+        }
+      }, 300);
+    }
+
+    function getNewMoodMessage() {
+      // Get a random mood type
+      const moodTypes = ['morning', 'afternoon', 'evening', 'stressed', 'random'];
+      const randomMoodType = moodTypes[Math.floor(Math.random() * moodTypes.length)];
+      
+      const selectedMood = moodBoosterMessages[randomMoodType];
+      const randomMessage = selectedMood.messages[Math.floor(Math.random() * selectedMood.messages.length)];
+      const randomAction = selectedMood.actions[Math.floor(Math.random() * selectedMood.actions.length)];
+      
+      document.getElementById('mood-title').textContent = selectedMood.title;
+      document.getElementById('mood-text').textContent = randomMessage;
+      document.getElementById('mood-action').textContent = randomAction;
+      
+      // Add gentle sparkles
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => createSparkle(), i * 200);
+      }
+    }
+
+    function closeMoodBooster() {
+      document.getElementById('mood-booster').style.display = 'none';
+    }
+
+    // Memory Lane Feature
+    const defaultMemories = [
+      {
+        date: "First Text",
+        title: "📱 Our First Digital Hello",
+        description: "The butterflies I felt when your name first appeared on my phone. Every message since then has been a gift.",
+        emoji: "💬❤️"
+      },
+      {
+        date: "First 'I Love You'",
+        title: "💖 Those Three Little Words",
+        description: "The moment we first said 'I umm you' - my heart knew it had found its home. The most beautiful words ever spoken.",
+        emoji: "💕🗣️"
+      },
+      {
+        date: "First Call",
+        title: "Hearing Your Voice for the First Time",
+        description: "Our first call where I got lost in your voice. Distance felt meaningless in that moment.",
+        emoji: "�✨"
+      },
+      {
+        date: "Every Day Since",
+        title: "🌅 Daily Doses of Love",
+        description: "Every single day with you has been a new memory, a new reason to smile, a new chapter in our beautiful love story.",
+        emoji: "📖💝"
+      }
+    ];
+
+    function showMemoryLane() {
+      const memoryContainer = document.getElementById('memory-lane');
+      memoryContainer.style.display = 'block';
+      memoryContainer.scrollIntoView({ behavior: 'smooth' });
+      
+      displayMemoryTimeline();
+      
+      // Add nostalgic effects
+      setTimeout(() => {
+        for (let i = 0; i < 6; i++) {
+          setTimeout(() => createPetal(), i * 400);
+        }
+      }, 500);
+    }
+
+    function displayMemoryTimeline() {
+      const timelineElement = document.getElementById('memory-timeline');
+      const savedMemories = JSON.parse(localStorage.getItem('yuviMemories') || '[]');
+      const allMemories = [...defaultMemories, ...savedMemories];
+      
+      timelineElement.innerHTML = '';
+      
+      if (allMemories.length === 0) {
+        timelineElement.innerHTML = '<p style="color: #666; text-align: center; font-style: italic;">Our journey is just beginning! Add your first memory below. 💕</p>';
+        return;
+      }
+      
+      allMemories.forEach((memory, index) => {
+        const memoryItem = document.createElement('div');
+        memoryItem.style.cssText = `
+          background: rgba(255, 255, 255, 0.9);
+          margin: 15px 0;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+          cursor: pointer;
+          border-left: 4px solid var(--main-color);
+        `;
+        
+        memoryItem.innerHTML = `
+          <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <span style="font-size: 1.5em; margin-right: 10px;">${memory.emoji}</span>
+            <div>
+              <div style="font-weight: bold; color: var(--main-color); font-size: 1.2em;">${memory.title}</div>
+              <div style="color: #666; font-size: 0.9em; font-style: italic;">${memory.date}</div>
+            </div>
+          </div>
+          <div style="color: #555; line-height: 1.6;">${memory.description}</div>
+        `;
+        
+        memoryItem.onmouseenter = () => memoryItem.style.transform = 'scale(1.02)';
+        memoryItem.onmouseleave = () => memoryItem.style.transform = 'scale(1)';
+        
+        memoryItem.onclick = () => {
+          // Add sparkle effect on click
+          for (let i = 0; i < 3; i++) {
+            setTimeout(() => createSparkle(), i * 150);
+          }
+        };
+        
+        timelineElement.appendChild(memoryItem);
+      });
+    }
+
+    function addNewMemory() {
+      const title = prompt('🌟 What\'s the title of this special memory?');
+      if (!title) return;
+      
+      const date = prompt('📅 When did this happen? (e.g., "Last Tuesday", "January 2024", etc.)');
+      if (!date) return;
+      
+      const description = prompt('💝 Tell me about this beautiful memory...');
+      if (!description) return;
+      
+      const emojis = ['💕', '✨', '🌟', '💖', '🎉', '🌸', '🦋', '🌙', '💫', '🎈', '🎊', '💐', '🌺', '🌼', '🌻'];
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)] + emojis[Math.floor(Math.random() * emojis.length)];
+      
+      const newMemory = {
+        date: date,
+        title: title,
+        description: description,
+        emoji: randomEmoji,
+        created: new Date().toISOString()
+      };
+      
+      const savedMemories = JSON.parse(localStorage.getItem('yuviMemories') || '[]');
+      savedMemories.push(newMemory);
+      localStorage.setItem('yuviMemories', JSON.stringify(savedMemories));
+      
+      // Refresh the timeline
+      displayMemoryTimeline();
+      
+      // Celebration effect
+      setTimeout(() => {
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#ff4f81', '#ff9a9e', '#fbc2eb']
+        });
+        alert('💕 Beautiful memory added to our journey! Our story keeps getting more amazing!');
+      }, 200);
+    }
+
+    function closeMemoryLane() {
+      document.getElementById('memory-lane').style.display = 'none';
+    }
+
+    // Add welcoming message
+    setTimeout(() => {
+      const welcomeMessage = document.createElement('div');
+      welcomeMessage.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: rgba(255, 79, 129, 0.95);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 25px;
+        z-index: 100;
+        animation: fadeIn 1s ease-in;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        max-width: 250px;
+        text-align: center;
+        font-size: 0.9em;
+      `;
+      welcomeMessage.innerHTML = '✨ I\'ve added new surprises for you! Check out the mood booster and memory lane! 💕';
+      welcomeMessage.onclick = () => welcomeMessage.remove();
+      
+      document.body.appendChild(welcomeMessage);
+      
+      // Auto-remove after 10 seconds
+      setTimeout(() => {
+        if (welcomeMessage.parentNode) welcomeMessage.remove();
+      }, 10000);
+    }, 6000);
+
+  </script>
+</body>
+</html>
